@@ -1,0 +1,10 @@
+{
+  "editor.detectIndentation": false,
+  "typescript.updateImportsOnFileMove.enabled": "never",
+  "javascript.updateImportsOnFileMove.enabled": "never",
+  "editor.tabSize": 2,
+  "files.insertFinalNewline": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+}
