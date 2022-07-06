@@ -1,18 +1,22 @@
 {
-  "name": "vuepress-starter",
+  "name": "knowledgenotes",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "directories": {
-    "doc": "docs"
-  },
   "scripts": {
     "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs",
-    "deploy": "bash deploy.sh"
+    "docs:build": "vuepress build docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/13328941960/knowledgeNotes.git"
   },
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/13328941960/knowledgeNotes/issues"
+  },
+  "homepage": "https://github.com/13328941960/knowledgeNotes#readme",
   "devDependencies": {
     "vuepress": "^1.9.7"
   }

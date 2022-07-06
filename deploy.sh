@@ -18,6 +18,6 @@ git commit -m 'deploy'
 # git push -f git@github.com:13328941960/13328941960.github.io.git master
 
 # 如果发布到 https://<13328941960>.github.io/<REPO>
-git push -f git@github.com:13328941960/knowledgeNotes.git main:gh-pages
+git push -f git@github.com:13328941960/knowledgeNotes.git master:gh-pages
 
 cd -

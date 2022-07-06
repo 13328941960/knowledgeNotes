@@ -1,7 +1,7 @@
 module.exports = {
     title: '前端知识体系',
     description: 'JavaScript、浏览器、网络协议、面试题等基本知识点',
-    base: '/knowledgeNotes/',
+    base:'/knowledgeNotes/',
     head: [
         ['link', {
             rel: 'icon',
