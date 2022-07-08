@@ -1,5 +1,5 @@
 ---
-home: false
+home: true
 actionText: 进入 →
 actionLink: /javaScript/1.varType
 features:

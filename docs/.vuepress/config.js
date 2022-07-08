@@ -44,7 +44,9 @@ module.exports = {
                 '/designMode/2.策略模式',
                 '/designMode/3.代理模式',
                 '/designMode/4.迭代器模式',
-                '/designMode/5.发布-订阅模式'
+                '/designMode/5.发布-订阅模式',
+                '/designMode/6.命令模式',
+                '/designMode/7.组合模式',
               ],
             },
             {
