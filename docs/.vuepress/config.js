@@ -24,7 +24,16 @@ module.exports = {
                     '/javaScript/4.this',
                     '/javaScript/5.code',
                     '/javaScript/6.nativeCode',
+                    '/javaScript/7.standard',
                 ],
+            },
+            {
+              title: '编程规范',
+              collapsable: true,
+              children: [
+                  '/standard/es6',
+                  // '/standard/react',
+              ],
             },
             {
               title: '网络协议',
