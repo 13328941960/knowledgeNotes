@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>资源解析 | 前端知识体系</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="icon" href="/knowledgeNotes/favicon.ico">
+    <meta name="description" content="JavaScript、浏览器、网络协议、面试题等基本知识点">
+    
+    <link rel="preload" href="/knowledgeNotes/assets/css/0.styles.65249e03.css" as="style"><link rel="preload" href="/knowledgeNotes/assets/js/app.ff98e3ee.js" as="script"><link rel="preload" href="/knowledgeNotes/assets/js/2.5cec4d22.js" as="script"><link rel="preload" href="/knowledgeNotes/assets/js/18.9d50af36.js" as="script"><link rel="prefetch" href="/knowledgeNotes/assets/js/10.0e94072a.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/11.63c4a176.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/12.683a2e21.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/13.fabf43ff.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/14.db14e0b9.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/15.a3d4504b.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/16.ddc0eba7.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/17.6983ebe9.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/19.cdcac6e3.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/20.64fa44fd.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/21.2419df31.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/22.8456f475.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/23.22681ae5.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/24.09db047c.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/25.b35149b9.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/26.c114ef23.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/27.50d7aa3e.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/28.00be1b2c.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/29.28513891.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/3.35785db3.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/30.11919ba2.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/31.66bc3185.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/32.a1d6b12a.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/33.b51a629c.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/34.853b3a10.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/35.34ad6895.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/36.f749baf9.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/37.929de205.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/38.b765a788.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/39.654a482d.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/4.7d847185.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/40.d7d42760.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/41.0e407fa4.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/42.bad9095e.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/43.a62b4545.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/44.1a9d126e.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/45.f054ddda.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/46.0090e396.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/47.1201a35d.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/48.bf148582.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/49.97281cf4.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/5.9ecf4c9f.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/50.c02bf3ab.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/6.218adc9e.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/7.24ba6bb3.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/8.216ad9a2.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/9.61b72c69.js">
+    <link rel="stylesheet" href="/knowledgeNotes/assets/css/0.styles.65249e03.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/knowledgeNotes/" class="home-link router-link-active"><!----> <span class="site-name">前端知识体系</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>JavaScript</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>编程规范</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>网络协议</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>设计模式</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>数据结构与算法</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>浏览器</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/knowledgeNotes/browser/storage.html" class="sidebar-link">本地存储</a></li><li><a href="/knowledgeNotes/browser/netWork.html" class="sidebar-link">网络请求</a></li><li><a href="/knowledgeNotes/browser/parse.html" aria-current="page" class="active sidebar-link">资源解析</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/knowledgeNotes/browser/parse.html#构建dom树" class="sidebar-link">构建DOM树</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/knowledgeNotes/browser/parse.html#html文法本质" class="sidebar-link">HTML文法本质</a></li></ul></li><li class="sidebar-sub-header"><a href="/knowledgeNotes/browser/parse.html#解析算法" class="sidebar-link">解析算法</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/knowledgeNotes/browser/parse.html#标记化算法" class="sidebar-link">标记化算法</a></li><li class="sidebar-sub-header"><a href="/knowledgeNotes/browser/parse.html#建树算法" class="sidebar-link">建树算法</a></li><li class="sidebar-sub-header"><a href="/knowledgeNotes/browser/parse.html#容错机制" class="sidebar-link">容错机制</a></li></ul></li><li class="sidebar-sub-header"><a href="/knowledgeNotes/browser/parse.html#样式计算" class="sidebar-link">样式计算</a></li><li class="sidebar-sub-header"><a href="/knowledgeNotes/browser/parse.html#生成布局树" class="sidebar-link">生成布局树</a></li></ul></li><li><a href="/knowledgeNotes/browser/render.html" class="sidebar-link">资源渲染</a></li><li><a href="/knowledgeNotes/browser/backflow.html" class="sidebar-link">回流与重绘</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Node</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>框架与库</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>前端工程化</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>性能优化</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>前端安全</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>面试题</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="资源解析"><a href="#资源解析" class="header-anchor">#</a> 资源解析</h1> <p>通过网络请求获取到资源后，如果该资源响应头中的 <code>Content-type</code> 是 <code>text/html</code>，
+那么接下来就要进入<code>解析</code>和<code>渲染</code>的过程。</p> <p>本节主要讲解资源解析的过程，分为三部：</p> <ol><li>构建DOM树</li> <li>样式计算</li> <li>生成布局树</li></ol> <h2 id="构建dom树"><a href="#构建dom树" class="header-anchor">#</a> 构建DOM树</h2> <p>由于浏览器无法识别<code>HTML</code>代码，所以需要通过一系列的字节流转换为一种有意义并且方便操作的数据结构。
+这种数据结构就是<code>DOM树</code>。DOM树的本质就是以document为根节点的多叉树。</p> <p>那么通过什么样的转换呢？</p> <h3 id="html文法本质"><a href="#html文法本质" class="header-anchor">#</a> HTML文法本质</h3> <p>首先，先说一下。<code>HTML</code>的文法是非上下文无关文法的。</p> <p>什么是上下文无关文法？</p> <p>在计算机科学的编译原理学科中，有非常明确的定义:</p> <div class="language- extra-class"><pre class="language-text"><code>若一个形式文法G = (N, Σ, P, S) 的产生式规则都取如下的形式：V-&gt;w，则叫上下文无关语法。其中 V∈N ，w∈(N∪Σ)* 。
+</code></pre></div><ol><li>N 是非终结符(顾名思义，就是说最后一个符号不是它, 下面同理)集合。</li> <li>Σ 是终结符集合。</li> <li>P 是开始符，它必须属于 N ，也就是非终结符。</li> <li>S 就是不同的产生式的集合。如 S -&gt; aSb 等等。</li></ol> <p>关于<code>HTML</code>为什么是非上下文无关文法。举个例子：</p> <p>比如解析器扫描到<code>form</code>标签，<strong>上下文无法文法</strong>的处理方式是：直接创建DOM对象。
+而实际场景并不是这样，解析器会查看<code>form</code>的上下文，如果<code>form</code>这个标签外层还有一个<code>form</code>标签会忽略这个标签，否则才创建DOM对象。</p> <h2 id="解析算法"><a href="#解析算法" class="header-anchor">#</a> 解析算法</h2> <p>HTML的解析算法分别两步：</p> <ol><li>标记化</li> <li>建树</li></ol> <p>这两个过程可以比作<code>词法分析</code>和<code>语法分析</code>。</p> <h3 id="标记化算法"><a href="#标记化算法" class="header-anchor">#</a> 标记化算法</h3> <p>这个算法输入是<code>HTML</code>文本，输出<code>HTML</code>标记，也称作<strong>标记生成器</strong>。其中运用<strong>有限状态机</strong>即在当前状态下，接收一个或多个字符，就会更新下一个状态。</p> <p>举个简单的例子来看下标记生成的过程：</p> <div class="language- extra-class"><pre class="language-text"><code>&lt;html&gt;
+  &lt;body&gt;
+    yeah, html
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre></div><div class="language- extra-class"><pre class="language-text"><code>
+通过一个简单的例子来演示一下标记化的过程。
+
+遇到&lt;, 状态为标记打开。
+
+接收[a-z]的字符，会进入标记名称状态。
+
+这个状态一直保持，直到遇到&gt;，表示标记名称记录完成，这时候变为数据状态。
+
+接下来遇到body标签做同样的处理。
+
+这个时候html和body的标记都记录好了。
+
+现在来到&lt;body&gt;中的&gt;，进入数据状态，之后保持这样状态接收后面的字符yeah, html
+
+接着接收 &lt;/body&gt; 中的&lt;，回到标记打开, 接收下一个/后，这时候会创建一个end tag的token。
+
+随后进入**标记名称状态**, 遇到&gt;回到**数据状态**。
+
+接着以同样的样式处理 &lt;/html&gt;
+</code></pre></div><h3 id="建树算法"><a href="#建树算法" class="header-anchor">#</a> 建树算法</h3> <p>DOM 树是一个以document为根节点的多叉树，因此解析器首先会创建一个document对象。
+标记生成器会把每个标记的信息发送给建树器。
+建树器接收到相应的标记时，会创建对应的 DOM 对象。
+创建这个DOM对象后会做两件事情:</p> <ol><li>将DOM对象加入DOM树中</li> <li>将对应的标签压入存储开放元素的栈中</li></ol> <p>还是拿下面这个例子说:</p> <div class="language- extra-class"><pre class="language-text"><code>&lt;html&gt;
+  &lt;body&gt;
+    yeah, html
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre></div><p>首先，状态为初始化状态。</p> <p>接收到标记生成器传来的html标签，这时候状态变为before html状态。同时创建一个HTMLHtmlElement的 DOM 元素, 将其加到document根对象上，并进行压栈操作。</p> <p>接着状态自动变为before head, 此时从标记生成器那边传来body，表示并没有head, 这时候建树器会自动创建一个HTMLHeadElement并将其加入到DOM树中。</p> <p>现在进入到in head状态, 然后直接跳到after head。</p> <p>现在标记生成器传来了body标记，创建HTMLBodyElement, 插入到DOM树中，同时压入开放标记栈。</p> <p>接着状态变为in body，然后来接收后面一系列的字符: yeah, html。接收到第一个字符的时候，会创建一个Text节点并把字符插入其中，然后把Text节点插入到 DOM 树中body元素的下面。随着不断接收后面的字符，这些字符会附在Text节点上。</p> <p>现在，标记生成器传过来一个body的结束标记，进入到after body状态。</p> <p>标记生成器最后传过来一个html的结束标记, 进入到after after body的状态，表示解析过程到此结束。</p> <h3 id="容错机制"><a href="#容错机制" class="header-anchor">#</a> 容错机制</h3> <p>HTML规范有很强大的宽容策略，接下来来看下 webkit一些经典的容错案例：</p> <ol><li>使用<br>而不是<br></li></ol> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">if</span> <span class="token punctuation">(</span>t<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">isCloseTag</span><span class="token punctuation">(</span>brTag<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> m_document<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">inCompatMode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">reportError</span><span class="token punctuation">(</span>MalformedBRError<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  t<span class="token operator">-</span><span class="token operator">&gt;</span>beginTag <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>全部换为<br>的形式。</p> <ol start="2"><li>表格</li></ol> <div class="language- extra-class"><pre class="language-text"><code>&lt;table&gt;
+  &lt;table&gt;
+    &lt;tr&gt;&lt;td&gt;inner table&lt;/td&gt;&lt;/tr&gt;
+  &lt;/table&gt;
+  &lt;tr&gt;&lt;td&gt;outer table&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+</code></pre></div><p>转成</p> <div class="language- extra-class"><pre class="language-text"><code>&lt;table&gt;
+    &lt;tr&gt;&lt;td&gt;outer table&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+&lt;table&gt;
+    &lt;tr&gt;&lt;td&gt;inner table&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+</code></pre></div><ol start="3"><li>表单元素嵌套</li></ol> <p>这时候直接忽略里面的form。</p> <h2 id="样式计算"><a href="#样式计算" class="header-anchor">#</a> 样式计算</h2> <p>样式的计算就是css的计算。由于浏览器无法直接识别css文本样式，所以渲染引擎要先进行解析计算。</p> <p>这个过程分为三步：</p> <ol><li><p>将css样式转成结构化的对象，即styleSheets，可以通过控制台document.styleSheets来查看。这个过程称为规则化样式表。</p></li> <li><p>将一些浏览器不好识别样式数值标准化，比如：red =&gt; #00fff, bold =&gt; 700, em =&gt; px;</p></li> <li><p>计算每个具体节点的样式：前面两步已经将样式规则化以及标准化，接下来就可以计算每个节点的具体样式信息了。</p> <p>计算的规则就两种（1）继承（2）层叠</p> <p>每个子节点都会继承父节点的样式，如果没有父节点的样式，则会继承浏览器默认的样式即userAgent。这就是继承的规则。</p> <p>层叠的规则就是综合各个样式属性最后得到的结果。</p> <p>在计算后样式后，会将所有的样式值挂到document.compuedStyles上，这样JS就可以直接获取样式了。</p></li></ol> <h2 id="生成布局树"><a href="#生成布局树" class="header-anchor">#</a> 生成布局树</h2> <p>前面已经生成<code>DOM树</code>和<code>DOM样式</code>，接下来就可以开始通过浏览器的布局系统<code>确定元素的位置</code>，也就是生成一棵<code>布局树</code>。</p> <p>生成<code>布局树</code>的过程有两步：</p> <ol><li><p>将DOM树节点添加到布局树中</p></li> <li><p>计算布局树节点的位置。</p></li></ol></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/knowledgeNotes/browser/netWork.html" class="prev">
+          网络请求
+        </a></span> <span class="next"><a href="/knowledgeNotes/browser/render.html">
+          资源渲染
+        </a>
+        →
+      </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/knowledgeNotes/assets/js/app.ff98e3ee.js" defer></script><script src="/knowledgeNotes/assets/js/2.5cec4d22.js" defer></script><script src="/knowledgeNotes/assets/js/18.9d50af36.js" defer></script>
+  </body>
+</html>
