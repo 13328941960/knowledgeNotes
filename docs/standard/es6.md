@@ -397,8 +397,9 @@ const [first, second] = arr; // first = 1  second = 2
 const [, first, second] = arr;
 ```
 + 5.3 对于多个返回值使用对象解构，而不是数组解构。
-
+::: tip
 为什么？你可以随时添加新的属性或者改变属性的顺序，而不用修改调用方。
+:::
 ```js
 // bad
 function processInput(input) {
@@ -483,7 +484,7 @@ function sayHi(name) {
     name
 }!`;
 ```
-+ 6.5 不要在转义字符串中不必要的字符: (no-useless-escape)[https://eslint.org/docs/latest/rules/no-useless-escape#rule-details]
++ 6.5 不要在转义字符串中不必要的字符: [no-useless-escape](https://eslint.org/docs/latest/rules/no-useless-escape#rule-details)
 ::: tip
 为什么？反斜杠损害了可读性，因此只有在必要的时候才会出现。
 :::
@@ -1335,7 +1336,7 @@ superPower = new SuperPower();
 // good
 const superPower = new SuperPower();
 ```
-+ 13.3 使用 const 声明每一个变量。eslint：prefer-const [one-var]
++ 13.3 使用 const 声明每一个变量。eslint：[prefer-const](https://eslint.org/docs/latest/rules/prefer-const#rule-details) [one-var](https://eslint.org/docs/latest/rules/one-var#rule-details)
 ::: tip
 为什么？这样更容易添加新的变量声明，而且你不必担心是使用 ; 还是使用 , 或引入标点符号的差别。 你可以通过 `debugger` 逐步查看每个声明，而不是立即跳过所有声明。
 :::
@@ -1688,16 +1689,16 @@ function example() {
 }
 ```
 ## 比较运算符和等号
-+ 15.1 优先使用 === 和 !== 而不是 == 和 !=.eslint：eqeqeq
++ 15.1 优先使用 === 和 !== 而不是 == 和 !=. eslint：[eqeqeq](https://eslint.org/docs/latest/rules/eqeqeq#rule-details)
 
-+ 15.2 条件表达式例如 if 语句通过抽象方法 ToBoolean 强制计算它们的表达式并且总是遵守下面的规则：
++ 15.2 条件表达式例如 `if` 语句通过抽象方法 `ToBoolean` 强制计算它们的表达式并且总是遵守下面的规则：
 
-对象 被计算为 true
-Undefined 被计算为 false
-Null 被计算为 false
-布尔值 被计算为 布尔的值
-数字 如果是 +0、-0、或 NaN 被计算为 false, 否则为 true
-字符串 如果是空字符串 '' 被计算为 false，否则为 true
+- **对象** 被计算为 **true**
+- **Undefined** 被计算为 **false**
+- **Null** 被计算为 **false**
+- **布尔值** 被计算为 **布尔的值**
+- **数字** 如果是 **+0、-0、或 NaN** 被计算为 **false**, 否则为 **true**
+- **字符串** 如果是空字符串 `''` 被计算为 **false**，否则为 **true**
 ```js
 if ([0]) {
   // true
@@ -1789,7 +1790,7 @@ if (x === 0) {
     const b = 1;
 }
 ```
-+ 15.7 禁止对关系运算符的左操作数使用否定运算符。 eslint: [https://eslint.org/docs/latest/rules/no-unsafe-negation#rule-details)
++ 15.7 禁止对关系运算符的左操作数使用否定运算符。 eslint: [no-unsafe-negation](https://eslint.org/docs/latest/rules/no-unsafe-negation#rule-details)
 ```js
 // bad
 if (!key in object) {
@@ -2312,10 +2313,10 @@ foo
 ```
 + 18.22 禁止使用tab键。eslint: [no-tabs](https://eslint.org/docs/latest/rules/no-tabs#rule-details)
 
-+ 18.23 在使用长方法链时进行缩进。使用前面的点 . 强调这是方法调用而不是新语句。.号调用对象属性时，应保持.号与属性在同一行。eslint：[dot-location](https://eslint.org/docs/latest/rules/dot-location#rule-details)
++ 18.23 在使用长方法链时进行缩进。使用前面的点 `.` 强调这是方法调用而不是新语句。.号调用对象属性时，应保持`.`号与属性在同一行。eslint：[dot-location](https://eslint.org/docs/latest/rules/dot-location#rule-details)
 
-单行链式调用， 应保持.号与属性在同一行
-最多只允许4个在同一行；多行链式调用，应保持.号与属性在同一行
+- 单行链式调用， 应保持`.`号与属性在同一行
+- 最多只允许4个在同一行；多行链式调用，应保持`.`号与属性在同一行
 ```js
 // bad
 const foo = object.

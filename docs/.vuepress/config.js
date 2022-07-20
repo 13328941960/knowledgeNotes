@@ -32,7 +32,7 @@ module.exports = {
               collapsable: true,
               children: [
                   '/standard/es6',
-                  // '/standard/react',
+                  '/standard/react',
               ],
             },
             {
