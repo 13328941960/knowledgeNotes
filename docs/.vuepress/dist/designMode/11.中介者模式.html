@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>中介者模式 | 前端知识体系</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="icon" href="/knowledgeNotes/favicon.ico">
+    <meta name="description" content="JavaScript、浏览器、网络协议、面试题等基本知识点">
+    
+    <link rel="preload" href="/knowledgeNotes/assets/css/0.styles.65249e03.css" as="style"><link rel="preload" href="/knowledgeNotes/assets/js/app.ff98e3ee.js" as="script"><link rel="preload" href="/knowledgeNotes/assets/js/2.5cec4d22.js" as="script"><link rel="preload" href="/knowledgeNotes/assets/js/22.8456f475.js" as="script"><link rel="prefetch" href="/knowledgeNotes/assets/js/10.0e94072a.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/11.63c4a176.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/12.683a2e21.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/13.fabf43ff.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/14.db14e0b9.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/15.a3d4504b.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/16.ddc0eba7.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/17.6983ebe9.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/18.9d50af36.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/19.cdcac6e3.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/20.64fa44fd.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/21.2419df31.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/23.22681ae5.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/24.09db047c.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/25.b35149b9.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/26.c114ef23.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/27.50d7aa3e.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/28.00be1b2c.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/29.28513891.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/3.35785db3.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/30.11919ba2.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/31.66bc3185.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/32.a1d6b12a.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/33.b51a629c.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/34.853b3a10.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/35.34ad6895.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/36.f749baf9.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/37.929de205.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/38.b765a788.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/39.654a482d.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/4.7d847185.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/40.d7d42760.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/41.0e407fa4.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/42.bad9095e.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/43.a62b4545.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/44.1a9d126e.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/45.f054ddda.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/46.0090e396.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/47.1201a35d.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/48.bf148582.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/49.97281cf4.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/5.9ecf4c9f.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/50.c02bf3ab.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/6.218adc9e.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/7.24ba6bb3.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/8.216ad9a2.js"><link rel="prefetch" href="/knowledgeNotes/assets/js/9.61b72c69.js">
+    <link rel="stylesheet" href="/knowledgeNotes/assets/css/0.styles.65249e03.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/knowledgeNotes/" class="home-link router-link-active"><!----> <span class="site-name">前端知识体系</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>JavaScript</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/knowledgeNotes/javaScript/1.varType.html" class="sidebar-link">变量与类型</a></li><li><a href="/knowledgeNotes/javaScript/2.prototype.html" class="sidebar-link">原型以及原型链</a></li><li><a href="/knowledgeNotes/javaScript/3.scopes.html" class="sidebar-link">作用域和闭包</a></li><li><a href="/knowledgeNotes/javaScript/4.this.html" class="sidebar-link">this</a></li><li><a href="/knowledgeNotes/javaScript/5.code.html" class="sidebar-link">JavaScript 编码能力</a></li><li><a href="/knowledgeNotes/javaScript/6.nativeCode.html" class="sidebar-link">手动实现前端轮子</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>编程规范</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>网络协议</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>设计模式</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>数据结构与算法</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>浏览器</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Node</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>框架与库</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>前端工程化</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>性能优化</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>前端安全</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>面试题</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="中介者模式"><a href="#中介者模式" class="header-anchor">#</a> 中介者模式</h1> <h2 id="现实例子"><a href="#现实例子" class="header-anchor">#</a> 现实例子</h2> <ol><li>机场指挥塔</li> <li>博彩公司</li></ol> <h2 id="例子-泡泡堂游戏"><a href="#例子-泡泡堂游戏" class="header-anchor">#</a> 例子——泡泡堂游戏</h2> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// function Player(name, teamColor) {</span>
+<span class="token comment">//   this.partners = [];</span>
+<span class="token comment">//   this.enemies = [];</span>
+<span class="token comment">//   this.state = 'live';</span>
+<span class="token comment">//   this.name = name;</span>
+<span class="token comment">//   this.teamColor = teamColor;</span>
+<span class="token comment">// }</span>
+
+<span class="token comment">// Player.prototype.win = function() {</span>
+<span class="token comment">//   console.log('winner:' + this.name)</span>
+<span class="token comment">// }</span>
+
+<span class="token comment">// Player.prototype.lose = function() {</span>
+<span class="token comment">//   console.log('loser:' + this.name)</span>
+<span class="token comment">// }</span>
+
+<span class="token comment">// Player.prototype.die = function() {</span>
+<span class="token comment">//   var allDead = true;</span>
+<span class="token comment">//   this.state = 'dead';</span>
+<span class="token comment">//   for(var i = 0, partner; partner = this.partners[i++];) {</span>
+<span class="token comment">//     if (partner.state != 'dead') {</span>
+<span class="token comment">//       allDead = false;</span>
+<span class="token comment">//       break;</span>
+<span class="token comment">//     }</span>
+<span class="token comment">//   }</span>
+<span class="token comment">//   if (allDead === true) {</span>
+<span class="token comment">//     this.lose();</span>
+<span class="token comment">//     for(var i = 0, partner; partner = this.partners[i++];) {</span>
+<span class="token comment">//       partner.lose();</span>
+<span class="token comment">//     }</span>
+<span class="token comment">//     for(var i = 0, enemy; enemy = this.enemies[i++];) {</span>
+<span class="token comment">//       console.log(this.enemies)</span>
+<span class="token comment">//       enemy.win();</span>
+<span class="token comment">//     }</span>
+<span class="token comment">//   }</span>
+<span class="token comment">// }</span>
+
+<span class="token comment">// var players = [];</span>
+
+<span class="token comment">// var playerFactory = function(name, teamColor) {</span>
+<span class="token comment">//   var newPlayer = new Player(name, teamColor);</span>
+<span class="token comment">//   for(var i = 0, player; player = players[i++];) {</span>
+<span class="token comment">//     if (player.teamColor === newPlayer.teamColor) {</span>
+<span class="token comment">//       player.partners.push(newPlayer)</span>
+<span class="token comment">//       newPlayer.partners.push(player)</span>
+<span class="token comment">//     } else {</span>
+<span class="token comment">//       player.enemies.push(newPlayer);</span>
+<span class="token comment">//       newPlayer.enemies.push(player)</span>
+<span class="token comment">//     }</span>
+<span class="token comment">//   }</span>
+<span class="token comment">//   players.push(newPlayer);</span>
+<span class="token comment">//   return newPlayer;</span>
+<span class="token comment">// }</span>
+
+
+
+<span class="token comment">// 泡泡堂中介者模式</span>
+ 
+<span class="token keyword">function</span> <span class="token function">Player</span><span class="token punctuation">(</span><span class="token parameter">name<span class="token punctuation">,</span> teamColor</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> <span class="token string">'live'</span><span class="token punctuation">;</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span>teamColor <span class="token operator">=</span> teamColor<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token class-name">Player</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">win</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'won:'</span> <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token class-name">Player</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">lose</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'lost:'</span> <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/**玩家死亡 */</span>
+
+<span class="token class-name">Player</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">die</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> <span class="token string">'dead'</span><span class="token punctuation">;</span>
+  playDirecotr<span class="token punctuation">.</span><span class="token function">reciveMessage</span><span class="token punctuation">(</span><span class="token string">'playerDead'</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 发消息给中介者，玩家死亡</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/** 移除玩家 */</span>
+
+<span class="token class-name">Player</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">remove</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  playDirecotr<span class="token punctuation">.</span><span class="token function">reciveMessage</span><span class="token punctuation">(</span><span class="token string">'removePlayer'</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 发消息给中介者，移除玩家</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/** 玩家换队 */</span>
+
+<span class="token class-name">Player</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">changeTeam</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">color</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  playDirecotr<span class="token punctuation">.</span><span class="token function">reciveMessage</span><span class="token punctuation">(</span><span class="token string">'changeTeam'</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">,</span> color<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 发消息给中介者，玩家换队</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> <span class="token function-variable function">playerFactory</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">name<span class="token punctuation">,</span> teamColor</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> newPlayer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Player</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> teamColor<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  playDirecotr<span class="token punctuation">.</span><span class="token function">reciveMessage</span><span class="token punctuation">(</span><span class="token string">'addPlayer'</span><span class="token punctuation">,</span> newPlayer<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 发消息给中介者，新增玩家</span>
+  <span class="token keyword">return</span> newPlayer<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> playDirecotr <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> players <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span> 
+  <span class="token keyword">var</span> operations <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token comment">/** 新增 */</span>
+  operations<span class="token punctuation">.</span><span class="token function-variable function">addPlayer</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">player</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> teamColor <span class="token operator">=</span> player<span class="token punctuation">.</span>teamColor<span class="token punctuation">;</span>
+    players<span class="token punctuation">[</span>teamColor<span class="token punctuation">]</span> <span class="token operator">=</span> players<span class="token punctuation">[</span>teamColor<span class="token punctuation">]</span> <span class="token operator">||</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    players<span class="token punctuation">[</span>teamColor<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>player<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">/**移除 */</span>
+  operations<span class="token punctuation">.</span><span class="token function-variable function">removePlayer</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">player</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> teamColor <span class="token operator">=</span> player<span class="token punctuation">.</span>teamColor<span class="token punctuation">;</span>
+    <span class="token keyword">var</span> teamPlayers <span class="token operator">=</span> players<span class="token punctuation">[</span>teamColor<span class="token punctuation">]</span> <span class="token operator">||</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> teamPlayers<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">--</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>teamPlayers<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">===</span> player<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        teamPlayers<span class="token punctuation">.</span><span class="token function">splice</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">/**换队 */</span>
+  operations<span class="token punctuation">.</span><span class="token function-variable function">changeTeam</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">player<span class="token punctuation">,</span> newTeamColor</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    operations<span class="token punctuation">.</span><span class="token function">removePlayer</span><span class="token punctuation">(</span>player<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    player<span class="token punctuation">.</span>teamColor <span class="token operator">=</span> newTeamColor<span class="token punctuation">;</span>
+    operations<span class="token punctuation">.</span><span class="token function">addPlayer</span><span class="token punctuation">(</span>player<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">/** 死亡 */</span>
+  operations<span class="token punctuation">.</span><span class="token function-variable function">playerDead</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">player</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> teamColor <span class="token operator">=</span> player<span class="token punctuation">.</span>teamColor<span class="token punctuation">;</span>
+    <span class="token keyword">var</span> teamPlayers <span class="token operator">=</span> players<span class="token punctuation">[</span>teamColor<span class="token punctuation">]</span> <span class="token operator">||</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> allDead <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> player<span class="token punctuation">;</span> player <span class="token operator">=</span> teamPlayers<span class="token punctuation">[</span>i<span class="token operator">++</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>player<span class="token punctuation">.</span>state <span class="token operator">!=</span> <span class="token string">'dead'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        allDead <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        <span class="token keyword">break</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>allDead <span class="token operator">===</span> <span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> player<span class="token punctuation">;</span> player <span class="token operator">=</span> teamPlayers<span class="token punctuation">[</span>i<span class="token operator">++</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        player<span class="token punctuation">.</span><span class="token function">lose</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">var</span> color <span class="token keyword">in</span> players<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>color <span class="token operator">!==</span> teamColor<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">var</span> teamPlayers <span class="token operator">=</span> players<span class="token punctuation">[</span>color<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> player<span class="token punctuation">;</span> player <span class="token operator">=</span> teamPlayers<span class="token punctuation">[</span>i<span class="token operator">++</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          player<span class="token punctuation">.</span><span class="token function">win</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span> 
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">var</span> <span class="token function-variable function">reciveMessage</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> message <span class="token operator">=</span> <span class="token class-name">Array</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">shift</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>arguments<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    operations<span class="token punctuation">[</span>message<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> arguments<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    reciveMessage<span class="token punctuation">,</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">var</span> player1 <span class="token operator">=</span> <span class="token function">playerFactory</span><span class="token punctuation">(</span><span class="token string">'皮蛋'</span><span class="token punctuation">,</span> <span class="token string">'red'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> player2 <span class="token operator">=</span> <span class="token function">playerFactory</span><span class="token punctuation">(</span><span class="token string">'小乖'</span><span class="token punctuation">,</span> <span class="token string">'red'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> player3 <span class="token operator">=</span> <span class="token function">playerFactory</span><span class="token punctuation">(</span><span class="token string">'宝宝'</span><span class="token punctuation">,</span> <span class="token string">'red'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> player4 <span class="token operator">=</span> <span class="token function">playerFactory</span><span class="token punctuation">(</span><span class="token string">'小强'</span><span class="token punctuation">,</span> <span class="token string">'red'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> player5 <span class="token operator">=</span> <span class="token function">playerFactory</span><span class="token punctuation">(</span><span class="token string">'黑妞'</span><span class="token punctuation">,</span> <span class="token string">'blue'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> player6 <span class="token operator">=</span> <span class="token function">playerFactory</span><span class="token punctuation">(</span><span class="token string">'葱头'</span><span class="token punctuation">,</span> <span class="token string">'blue'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> player7 <span class="token operator">=</span> <span class="token function">playerFactory</span><span class="token punctuation">(</span><span class="token string">'胖墩'</span><span class="token punctuation">,</span> <span class="token string">'blue'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> player8 <span class="token operator">=</span> <span class="token function">playerFactory</span><span class="token punctuation">(</span><span class="token string">'海盗'</span><span class="token punctuation">,</span> <span class="token string">'blue'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+player1<span class="token punctuation">.</span><span class="token function">die</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+player2<span class="token punctuation">.</span><span class="token function">die</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+player3<span class="token punctuation">.</span><span class="token function">die</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+player4<span class="token punctuation">.</span><span class="token function">die</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+</code></pre></div><h2 id="购买手机"><a href="#购买手机" class="header-anchor">#</a> 购买手机</h2> <div class="language-html extra-class"><pre class="language-html"><code>选择颜色 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>select</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>colorSelect<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span><span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>请选择<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>red<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>红色<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>blue<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>蓝色<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>select</span><span class="token punctuation">&gt;</span></span>
+
+输入购买数量：<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>text<span class="token punctuation">&quot;</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>numberInput<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+
+你选择的颜色<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>colorInfo<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+你输入的数量 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>numberInfo<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>nextBtn<span class="token punctuation">&quot;</span></span> <span class="token attr-name">disabled</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>true<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>请选择手机颜色和购买数量<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">var</span> goods <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token string-property property">&quot;red&quot;</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+  <span class="token string-property property">&quot;blue&quot;</span><span class="token operator">:</span> <span class="token number">6</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> colorSelect <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'colorSelect'</span><span class="token punctuation">)</span>
+
+<span class="token keyword">var</span> numberInput <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'numberInput'</span><span class="token punctuation">)</span>
+<span class="token keyword">var</span> colorInfo <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'colorInfo'</span><span class="token punctuation">)</span>
+<span class="token keyword">var</span> numberInfo <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'numberInfo'</span><span class="token punctuation">)</span>
+<span class="token keyword">var</span> nextBtn <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'nextBtn'</span><span class="token punctuation">)</span>
+
+colorSelect<span class="token punctuation">.</span><span class="token function-variable function">onchange</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> color <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>value<span class="token punctuation">,</span>
+  number <span class="token operator">=</span> numberInput<span class="token punctuation">.</span>value
+  stock <span class="token operator">=</span> goods<span class="token punctuation">[</span>color<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+  colorInfo<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> color<span class="token punctuation">;</span>
+  <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>color<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    nextBtn<span class="token punctuation">.</span>disabled <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    nextBtn<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> <span class="token string">'请选择颜色'</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>Number<span class="token punctuation">.</span><span class="token function">isInteger</span><span class="token punctuation">(</span>number <span class="token operator">-</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> number <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    nextBtn<span class="token punctuation">.</span>disabled <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    nextBtn<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> <span class="token string">'请输入正确的数量'</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>number <span class="token operator">&gt;</span> stock<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    nextBtn<span class="token punctuation">.</span>disabled <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    nextBtn<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> <span class="token string">'库存不足'</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  nextBtn<span class="token punctuation">.</span>disabled <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+  nextBtn<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> <span class="token string">'加入购物车'</span>
+<span class="token punctuation">}</span>
+
+numberInput<span class="token punctuation">.</span><span class="token function-variable function">oninput</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> color <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>value<span class="token punctuation">,</span>
+  number <span class="token operator">=</span> numberInput<span class="token punctuation">.</span>value
+  stock <span class="token operator">=</span> goods<span class="token punctuation">[</span>color<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+  colorInfo<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> color<span class="token punctuation">;</span>
+  <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>color<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    nextBtn<span class="token punctuation">.</span>disabled <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    nextBtn<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> <span class="token string">'请选择颜色'</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>Number<span class="token punctuation">.</span><span class="token function">isInteger</span><span class="token punctuation">(</span>number <span class="token operator">-</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> number <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    nextBtn<span class="token punctuation">.</span>disabled <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    nextBtn<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> <span class="token string">'请输入正确的数量'</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>number <span class="token operator">&gt;</span> stock<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    nextBtn<span class="token punctuation">.</span>disabled <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    nextBtn<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> <span class="token string">'库存不足'</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  nextBtn<span class="token punctuation">.</span>disabled <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+  nextBtn<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> <span class="token string">'加入购物车'</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/knowledgeNotes/assets/js/app.ff98e3ee.js" defer></script><script src="/knowledgeNotes/assets/js/2.5cec4d22.js" defer></script><script src="/knowledgeNotes/assets/js/22.8456f475.js" defer></script>
+  </body>
+</html>

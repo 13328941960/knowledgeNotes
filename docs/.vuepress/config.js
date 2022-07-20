@@ -15,17 +15,16 @@ module.exports = {
         sidebarDepth: 2,
         sidebar: [
             {
-                title: 'JavaScript',
-                collapsable: true,
-                children: [
-                    '/javaScript/1.varType',
-                    '/javaScript/2.prototype',
-                    '/javaScript/3.scopes',
-                    '/javaScript/4.this',
-                    '/javaScript/5.code',
-                    '/javaScript/6.nativeCode',
-                    '/javaScript/7.standard',
-                ],
+              title: 'JavaScript',
+              collapsable: true,
+              children: [
+                  '/javaScript/1.varType',
+                  '/javaScript/2.prototype',
+                  '/javaScript/3.scopes',
+                  '/javaScript/4.this',
+                  '/javaScript/5.code',
+                  '/javaScript/6.nativeCode',
+              ],
             },
             {
               title: '编程规范',
