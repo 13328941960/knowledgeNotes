@@ -55,6 +55,13 @@ module.exports = {
                 '/designMode/5.发布-订阅模式',
                 '/designMode/6.命令模式',
                 '/designMode/7.组合模式',
+                '/designMode/8.模板方法模式',
+                '/designMode/9.享元模式',
+                '/designMode/10.职业链模式',
+                '/designMode/11.中介者模式',
+                '/designMode/12.装饰者模式',
+                '/designMode/13.状态模式',
+                '/designMode/14.适配器模式',
               ],
             },
             {
