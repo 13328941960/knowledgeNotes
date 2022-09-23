@@ -27,20 +27,13 @@ module.exports = {
               ],
             },
             {
-              title: '编程规范',
-              collapsable: true,
-              children: [
-                  '/standard/es6',
-                  '/standard/react',
-              ],
-            },
-            {
               title: '网络协议',
               collapsable: true,
               children: [
-                  '/net/1.网络基础',
+                  '/net/1.netBase',
                   '/net/2.http',
                   '/net/3.https',
+                  '/net/4.httpAuth',
               ],
               sidebarDepth: 2,
             },
@@ -68,20 +61,29 @@ module.exports = {
               title: '数据结构与算法',
               collapsable: true,
               children: [
-                '/suanFa/1.栈'
+                '/suanFa/a.zhan',
+                '/suanFa/b.duilie',
+                '/suanFa/c.lianbiao',
+                '/suanFa/d.jihe',
+                '/suanFa/e.zidian',
+                '/suanFa/f.tree',
+                '/suanFa/g.dui',
+                '/suanFa/h.sort',
+                '/suanFa/i.suanfa',
+                '/suanFa/j.O',
               ],
             },
             {
-                title: '浏览器',
-                collapsable: true,
-                children: [
-                    '/browser/storage',
-                    '/browser/netWork',
-                    '/browser/parse',
-                    '/browser/render',
-                    '/browser/backflow',
-                ],
-                sidebarDepth: 2,
+              title: '浏览器',
+              collapsable: true,
+              children: [
+                  '/browser/storage',
+                  '/browser/netWork',
+                  '/browser/parse',
+                  '/browser/render',
+                  '/browser/backflow',
+              ],
+              sidebarDepth: 2,
             },
             {
               title: 'Node',
@@ -132,6 +134,14 @@ module.exports = {
                     '/mianshi/10.前端安全',
                     '/mianshi/12.前端工程',
                 ],
+            },
+            {
+              title: '编程规范',
+              collapsable: true,
+              children: [
+                  '/standard/es6',
+                  '/standard/react',
+              ],
             },
         ]
     },
