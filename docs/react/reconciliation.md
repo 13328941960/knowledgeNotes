@@ -1,6 +1,6 @@
-# 深入了解React中的新协调算法
+# React源码解析之协调算法（reconciliation）
 
-了解新协调算法的两个主要阶段。详细了解React如何更新状态、`props` 和处理子级。
+了解协调算法（reconciliation）的两个主要阶段。详细了解React如何更新状态、`props` 和处理子级。
 
 React是一个用于构建用户界面的JavaScript库。其核心是跟踪组件状态变化并将更新后的状态投影到屏幕的机制。在React中，我们将此过程称为和解。当调用`setState`方法时框架会去检查`state`或`props`是否已更改，如果更改了会重新渲染组件。
 
@@ -157,7 +157,7 @@ React还会根据`key`属性移动树中的节点，或者删除`render`方法�
 
 在第一次渲染之后，React最终得到一个用于渲染应用程序用户界面状态的fiber树。此树通常称为**当前树**。当React开始处理更新时，它会构建一个所谓的 **workInProgress 树**，它表示要接下来要刷新到屏幕上的状态。
 
-所有工作都在`workInProgress`树中的fiber上执行。当React遍历当前树时，它会为每个现有fiber节点创建一个用于构成`workInProgress`树的备用节点。此节点是使用render方法返回的React元素中的数据创建的。一旦更新处理完毕，所有相关工作都完成了，React将得到一个可以刷新到屏幕上的备用树。在屏幕上渲染此`workInProgress`树后，它将成为当前树。
+所有工作都在`workInProgress`树中的fiber上执行。当React遍历当前树时，它会为每个现有fiber节点创建一个用于构成`workInProgress`树的替换节点。此节点是使用render方法返回的React元素中的数据创建的。一旦更新处理完毕，所有相关工作都完成了，React将得到一个可以刷新到屏幕上的替换树。在屏幕上渲染此`workInProgress`树后，它将成为当前树。
 
 React的核心原则之一是一致性。React总是一次性更新DOM ——— 它不会显示部分结果。`workInProgress`树就像一个用户看不到的草稿，因此React可以先处理所有组件，然后将其更改刷新到屏幕。
 
@@ -432,14 +432,14 @@ function completeWork(workInProgress) {
 
 ## commit阶段
 
-该阶段从函数[completeRoot](https://github.com/facebook/react/blob/95a313ec0b957f71798a69d8e83408f40e76765b/packages/react-reconciler/src/ReactFiberScheduler.js#L2306)开始。这是React更新DOM并调用`Pre-mutation`和`Post-mutation`生命周期方法的地方。
+该阶段从函数[completeRoot](https://github.com/facebook/react/blob/95a313ec0b957f71798a69d8e83408f40e76765b/packages/react-reconciler/src/ReactFiberScheduler.js#L2306)开始。这是React更新DOM并调用改动前后的生命周期方法的地方。
 
-当React到这个阶段时，它有2棵树和副作用列表。第一棵树表示屏幕上当前已经渲染的状态。另一个是在渲染阶段构建一个的备用树，此备用树通过子指针和同级指针链接到当前树。在源代码中称为`finishedWork`和`workInProgress`，表示需要在屏幕上展示的状态。
+当React到这个阶段时，它有2棵树和副作用列表。第一棵树表示屏幕上当前已经渲染的状态。另一个是在渲染阶段构建一个的替换树，此替换树通过子指针和同级指针链接到当前树。在源代码中称为`finishedWork`和`workInProgress`，表示需要在屏幕上展示的状态。
 
 然后，有一个副作用列表，它是`finishedWork`树中通过`nextEffect`指针链接的节点的子集。请记住，副作用列表是运行渲染阶段的结果。渲染的主要是确定需要插入、更新或删除哪些节点，以及需要调用哪些组件的生命周期方法。副作用列表在提交阶段执行迭代的节点集合。
 
 :::tip
-为了调试，可以通过fiber根的当前属性访问当前树。可以通过当前树中HostFiber节点的备用属性访问finishedWork树。
+为了调试，可以通过fiber根的当前属性访问当前树。可以通过当前树中HostFiber节点的`alternate`属性访问finishedWork树。
 :::
 
 在提交阶段运行的主要函数是[commitRoot](https://github.com/facebook/react/blob/95a313ec0b957f71798a69d8e83408f40e76765b/packages/react-reconciler/src/ReactFiberScheduler.js#L523)。基本上，它执行以下操作：
@@ -477,7 +477,7 @@ function commitRoot(root, finishedWork) {
 
 每个子函数都是一个循环，循环遍历副作用列表并检查副作用类型。当它找到与函数用途相关的作用时，就会使用它。
 
-### Pre-mutation 生命周期方法
+### 改动前生命周期方法
 
 下面是在副作用树上迭代并检查节点是否具有“Snapshot”作用的代码：
 
@@ -526,6 +526,6 @@ function commitAllHostEffects() {
 
 有意思的是，React调用`componentWillUnmount`方法是`commitDeletion`函数中删除过程的一部分。
 
-### Post-mutation 生命周期
+### 改动后的生命周期
 
-[commitAllLifecycles](https://github.com/facebook/react/blob/95a313ec0b957f71798a69d8e83408f40e76765b/packages/react-reconciler/src/ReactFiberScheduler.js#L465) 是React调用所有剩余生命周期方法`componentDidUpdate`和`componentDedMount`的函数。
+[commitAllLifecycles](https://github.com/facebook/react/blob/95a313ec0b957f71798a69d8e83408f40e76765b/packages/react-reconciler/src/ReactFiberScheduler.js#L465) 是React调用所有剩余生命周期方法`componentDidUpdate`和`componentDidMount`的函数。
